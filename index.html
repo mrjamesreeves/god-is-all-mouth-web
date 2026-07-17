@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>God Is All Mouth</title>
+  <meta name="description" content="We must remember that God is all mouth.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: #000;
+      color: #fff;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      gap: 4rem;
+    }
+
+    main {
+      max-width: 34rem;
+      text-align: center;
+    }
+
+    blockquote p {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .note {
+      margin-top: 2.5rem;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: #999;
+      text-align: left;
+    }
+
+    figure {
+      width: 100%;
+      max-width: 54rem;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .sound-hint {
+      margin-top: 0.75rem;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <blockquote>
+      <p>&ldquo;We must remember that God is all mouth.&rdquo;</p>
+    </blockquote>
+    <p class="note">Madame Guyon (1648&ndash;1717) was a mystic whose writings on inward
+    prayer, abandonment to God, and pure love circulated widely across France.
+    Although she was never formally condemned as a heretic by name, she was
+    imprisoned several times, including in the Bastille.</p>
+  </main>
+
+  <figure>
+    <video src="media/god-texture-test.mp4" autoplay muted loop playsinline></video>
+    <figcaption class="sound-hint">click video for sound</figcaption>
+  </figure>
+
+  <script>
+    const video = document.querySelector('video');
+    const hint = document.querySelector('.sound-hint');
+    video.addEventListener('click', () => {
+      video.muted = !video.muted;
+      hint.textContent = video.muted ? 'click video for sound' : 'click video to mute';
+    });
+  </script>
+</body>
+</html>
