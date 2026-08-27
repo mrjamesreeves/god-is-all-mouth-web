@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>God Is All Mouth</title>
-  <meta name="description" content="We must remember that God is all mouth. Dreams, mysticism, and theory.">
+  <meta name="description" content="We must remember that God is all mouth. A record label, documentary videos, and dream theory.">
   <link rel="icon" href="favicon.ico" sizes="48x48 32x32 16x16">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/ums8war.css">
   <style>
     :root {
       --col: 500px;
@@ -23,9 +21,9 @@
       background-image: url('assets/paper-bg.webp');
       background-size: 1431px auto;
       background-repeat: repeat;
-      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-family: 'ibm-plex-serif', Georgia, serif;
       color: var(--ink);
-      padding: 84px 20px 0;
+      padding: 74px 20px 0;
       display: flex;
       justify-content: center;
     }
@@ -38,23 +36,61 @@
     /* --- masthead --- */
     .logo { display: block; width: 100%; height: auto; }
 
-    .hero {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-top: 29px;
-      mix-blend-mode: multiply;
+    .nav {
+      margin-top: 18px;
+      text-align: center;
+      font-family: 'din-condensed-variable', 'Arial Narrow', sans-serif;
+      font-variation-settings: 'wght' 500;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 12px;
     }
+
+    .nav button, .nav a {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      letter-spacing: inherit;
+      color: var(--ink);
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: inherit;
+    }
+
+    .nav button:hover, .nav a:hover,
+    .nav button.is-active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav .sep { user-select: none; }
+
+    section, footer { display: block; }
+    section[hidden] { display: none; }
 
     .bar {
       height: 40px;
       background: var(--ink);
     }
 
-    /* --- handwriting loop --- */
+    /* --- mouth + handwriting --- */
+    .masthead-art { margin-top: 29px; }
+
+    .hero {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+    }
+
     .hand {
       position: relative;
-      height: 421px;
+      height: 258px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -76,10 +112,12 @@
     }
 
     /* --- Guyon quote --- */
+    .quote { margin-bottom: 44px; }
+
     .quote-row {
       display: flex;
       gap: 27px;
-      margin-top: 38px;
+      margin-top: 32px;
     }
 
     .quote-row img {
@@ -105,21 +143,32 @@
       line-height: 1.5;
     }
 
-    /* --- theories --- */
-    .theories-head {
-      margin-top: 91px;
+    /* --- embeds --- */
+    .embed { margin-bottom: 64px; }
+
+    .embed iframe {
+      display: block;
+      border: 0;
+      width: 100%;
     }
+
+    .embed .yt { aspect-ratio: 16 / 9; height: auto; }
+
+    /* Bandcamp's large player is square artwork + a fixed control strip,
+       so the height tracks the column width instead of scaling in proportion */
+    .embed .bc { height: calc(min(100vw - 40px, var(--col)) + 120px); }
+
+    /* --- theories --- */
+    .theory { margin-bottom: 64px; }
 
     .theories-title {
       display: block;
-      width: 191px;
-      height: 37px;
+      width: 217px;
+      height: auto;
       margin: 22px 0 24px;
     }
 
     .toc { list-style: none; }
-
-    .toc li + li { margin-top: 0; }
 
     .toc button {
       display: flex;
@@ -206,59 +255,79 @@
 
     @media (max-width: 540px) {
       body { padding-top: 48px; }
-      .hand { height: 300px; }
+      .nav { font-size: 12px; letter-spacing: 0.14em; gap: 8px; }
+      .hand { height: 220px; }
       .toc button { font-size: clamp(13px, 3.7vw, 20px); letter-spacing: -0.5px; }
       .quote-text blockquote { font-size: 26px; line-height: 28px; }
       .quote-row { flex-direction: column; gap: 16px; }
-      .theories-head { margin-top: 60px; }
     }
   </style>
 </head>
 <body>
   <div class="col">
-    <img class="logo" src="assets/god-is-all-mouth-logo.svg" alt="God Is All Mouth" width="499" height="52">
+    <header>
+      <img class="logo" src="assets/god-is-all-mouth-logo.svg" alt="God Is All Mouth" width="500" height="47">
+      <nav class="nav" aria-label="Sections">
+        <button data-filter="label">Record Label</button><span class="sep">&bull;</span>
+        <button data-filter="video">Documentary Videos</button><span class="sep">&bull;</span>
+        <button data-filter="theory">Theory</button><span class="sep">&bull;</span>
+        <a href="https://thedream.club" target="_blank" rel="noopener">Dream Club</a>
+      </nav>
+    </header>
 
-    <img class="hero" src="assets/god-mouth-hero.webp" alt="An open mouth, rendered in torn and degraded photographic texture" width="500" height="500">
+    <section class="masthead-art">
+      <div class="bar"></div>
+      <img class="hero" src="assets/god-mouth-hero.webp" alt="An open mouth, rendered in torn and degraded photographic texture" width="500" height="500">
+      <div class="hand" id="hand" aria-label="Handwritten dream fragments"></div>
+    </section>
 
-    <div class="bar"></div>
-
-    <div class="hand" id="hand" aria-label="Handwritten dream fragments"></div>
-
-    <div class="bar"></div>
-
-    <div class="quote-row">
-      <img src="assets/guyon.webp" alt="Engraved portrait of Madame Guyon" width="132" height="180">
-      <div class="quote-text">
-        <blockquote>&ldquo;We must remember that God is all mouth.&rdquo;</blockquote>
-        <p>Madame Guyon (1648&ndash;1717) was a mystic whose writings on inward prayer,
-        abandonment to God, and pure love circulated widely across France. Although she
-        was never formally condemned as a heretic by name, she was imprisoned several
-        times, including in the Bastille.</p>
+    <section class="quote">
+      <div class="bar"></div>
+      <div class="quote-row">
+        <img src="assets/guyon.webp" alt="Engraved portrait of Madame Guyon" width="132" height="180">
+        <div class="quote-text">
+          <blockquote>&ldquo;We must remember that God is all mouth.&rdquo;</blockquote>
+          <p>Madame Guyon (1648&ndash;1717) was a mystic whose writings on inward prayer,
+          abandonment to God, and pure love circulated widely across France. Although she
+          was never formally condemned as a heretic by name, she was imprisoned several
+          times, including in the Bastille.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="theories-head">
+    <section class="embed" data-cat="video">
+      <div class="bar"></div>
+      <iframe class="yt" width="560" height="315" src="https://www.youtube.com/embed/Wo3_XUq085c?si=JzBksNjVJr4e2vXi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+
+    <section class="embed" data-cat="label">
+      <div class="bar"></div>
+      <iframe class="bc" src="https://bandcamp.com/EmbeddedPlayer/album=1692550640/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/transparent=true/" seamless><a href="https://jamesreeves.bandcamp.com/album/crocodile-eye">Crocodile Eye by James A. Reeves</a></iframe>
+    </section>
+
+    <section class="theory" data-cat="theory">
       <div class="bar"></div>
       <img class="theories-title" src="assets/title-theories.svg" alt="Theories" width="191" height="37">
-    </div>
 
-    <div class="toc-view" id="toc-view">
-      <ul class="toc" id="toc"></ul>
-    </div>
-
-    <article class="essay" id="essay" tabindex="-1">
-      <button class="essay-back" id="essay-back">&larr; Theories</button>
-      <h2 id="essay-title"></h2>
-      <div class="essay-meta">
-        <span id="essay-num"></span> &middot;
-        <a href="https://www.martinessig.com" target="_blank" rel="noopener">Martin Essig</a>
+      <div class="toc-view" id="toc-view">
+        <ul class="toc" id="toc"></ul>
       </div>
-      <div class="essay-body" id="essay-body"></div>
-    </article>
 
-    <div class="bar" style="margin-top:31px"></div>
+      <article class="essay" id="essay" tabindex="-1">
+        <button class="essay-back" id="essay-back">&larr; Theories</button>
+        <h2 id="essay-title"></h2>
+        <div class="essay-meta">
+          <span id="essay-num"></span> &middot;
+          <a href="https://www.martinessig.com" target="_blank" rel="noopener">Martin Essig</a>
+        </div>
+        <div class="essay-body" id="essay-body"></div>
+      </article>
+    </section>
 
-    <img class="footer-img" src="assets/god-mouth-footer.webp" alt="Collage of torn paper, chain, and feathers" width="499" height="641">
+    <footer>
+      <div class="bar"></div>
+      <img class="footer-img" src="assets/god-mouth-footer.webp" alt="Collage of torn photographs of faces" width="500" height="500">
+    </footer>
   </div>
 
   <script>
@@ -362,6 +431,17 @@
 
     setInterval(advance, 5000);
 
+    // --- nav: filter sections by category ---
+    const filterBtns = [...document.querySelectorAll('.nav button[data-filter]')];
+    const catSections = [...document.querySelectorAll('section[data-cat]')];
+    let activeFilter = null;
+
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      activeFilter = activeFilter === btn.dataset.filter ? null : btn.dataset.filter;
+      filterBtns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === activeFilter));
+      catSections.forEach(s => { s.hidden = activeFilter !== null && s.dataset.cat !== activeFilter; });
+    }));
+
     // --- theories: table of contents and essay reader ---
     const ESSAYS = [
       {
@@ -457,8 +537,5 @@
       tocView.classList.remove('is-hidden');
     });
   </script>
-  <!-- analytics: page views + referrers only, no cookies -->
-  <script defer src="https://numbers.jamesreeves.co/numbers.js" data-site="giam"></script>
-  <noscript><img src="https://numbers.jamesreeves.co/count.php?s=giam" alt="" width="1" height="1" style="position:absolute"></noscript>
 </body>
 </html>
