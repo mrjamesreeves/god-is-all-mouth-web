@@ -36,18 +36,20 @@
     /* --- masthead --- */
     .logo { display: block; width: 100%; height: auto; }
 
+    .home { display: block; cursor: pointer; }
+
     .nav {
       margin-top: 18px;
       text-align: center;
-      font-family: 'din-condensed-variable', 'Arial Narrow', sans-serif;
-      font-variation-settings: 'wght' 500;
+      font-family: 'din-2014-narrow', 'Arial Narrow', sans-serif;
+      font-weight: 600;
       font-size: 14px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       display: flex;
       justify-content: center;
       align-items: baseline;
-      gap: 12px;
+      gap: 10px;
     }
 
     .nav button, .nav a {
@@ -60,6 +62,7 @@
       cursor: pointer;
       text-decoration: none;
       text-transform: inherit;
+      white-space: nowrap;
     }
 
     .nav button:hover, .nav a:hover,
@@ -70,8 +73,14 @@
 
     .nav .sep { user-select: none; }
 
+    .nav-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
     section, footer { display: block; }
-    section[hidden] { display: none; }
+    section[hidden], footer[hidden] { display: none; }
 
     .bar {
       height: 40px;
@@ -255,7 +264,8 @@
 
     @media (max-width: 540px) {
       body { padding-top: 48px; }
-      .nav { font-size: 12px; letter-spacing: 0.14em; gap: 8px; }
+      .nav { font-size: 12px; letter-spacing: 0.08em; flex-direction: column; align-items: center; gap: 5px; }
+      .nav .sep-mid { display: none; }
       .hand { height: 220px; }
       .toc button { font-size: clamp(13px, 3.7vw, 20px); letter-spacing: -0.5px; }
       .quote-text blockquote { font-size: 26px; line-height: 28px; }
@@ -266,12 +276,19 @@
 <body>
   <div class="col">
     <header>
-      <img class="logo" src="assets/god-is-all-mouth-logo.svg" alt="God Is All Mouth" width="500" height="47">
+      <a class="home" href="#" id="home" aria-label="Show all sections">
+        <img class="logo" src="assets/god-is-all-mouth-logo.svg" alt="God Is All Mouth" width="500" height="47">
+      </a>
       <nav class="nav" aria-label="Sections">
-        <button data-filter="label">Record Label</button><span class="sep">&bull;</span>
-        <button data-filter="video">Documentary Videos</button><span class="sep">&bull;</span>
-        <button data-filter="theory">Theory</button><span class="sep">&bull;</span>
-        <a href="https://thedream.club" target="_blank" rel="noopener">Dream Club</a>
+        <span class="nav-row">
+          <button data-filter="label">Record Label</button><span class="sep">&bull;</span>
+          <button data-filter="video">Documentary Videos</button>
+        </span>
+        <span class="sep sep-mid">&bull;</span>
+        <span class="nav-row">
+          <button data-filter="theory">Theory</button><span class="sep">&bull;</span>
+          <a href="https://thedream.club" target="_blank" rel="noopener">Dream Club</a>
+        </span>
       </nav>
     </header>
 
@@ -431,16 +448,24 @@
 
     setInterval(advance, 5000);
 
-    // --- nav: filter sections by category ---
+    // --- nav: filter the page down to one section; the logo restores it ---
     const filterBtns = [...document.querySelectorAll('.nav button[data-filter]')];
-    const catSections = [...document.querySelectorAll('section[data-cat]')];
+    const blocks = [...document.querySelectorAll('section, footer')];
     let activeFilter = null;
 
-    filterBtns.forEach(btn => btn.addEventListener('click', () => {
-      activeFilter = activeFilter === btn.dataset.filter ? null : btn.dataset.filter;
-      filterBtns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === activeFilter));
-      catSections.forEach(s => { s.hidden = activeFilter !== null && s.dataset.cat !== activeFilter; });
-    }));
+    function applyFilter(f) {
+      activeFilter = f;
+      filterBtns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === f));
+      blocks.forEach(el => { el.hidden = f !== null && el.dataset.cat !== f; });
+    }
+
+    filterBtns.forEach(btn => btn.addEventListener('click', () =>
+      applyFilter(activeFilter === btn.dataset.filter ? null : btn.dataset.filter)));
+
+    document.getElementById('home').addEventListener('click', e => {
+      e.preventDefault();
+      applyFilter(null);
+    });
 
     // --- theories: table of contents and essay reader ---
     const ESSAYS = [
