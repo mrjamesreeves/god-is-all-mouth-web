@@ -90,6 +90,10 @@
     /* --- mouth + handwriting --- */
     .masthead-art { margin-top: 29px; }
 
+    /* filtered view: the lone visible section inherits the masthead's
+       nav-to-bar gap */
+    body.is-filtered section:not([hidden]) { margin-top: 29px; }
+
     .hero {
       display: block;
       width: 100%;
@@ -457,6 +461,7 @@
       activeFilter = f;
       filterBtns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === f));
       blocks.forEach(el => { el.hidden = f !== null && el.dataset.cat !== f; });
+      document.body.classList.toggle('is-filtered', f !== null);
     }
 
     filterBtns.forEach(btn => btn.addEventListener('click', () =>
