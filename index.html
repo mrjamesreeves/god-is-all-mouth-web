@@ -79,8 +79,16 @@
       gap: 10px;
     }
 
-    section, footer { display: block; }
+    section, footer {
+      display: block;
+      transition: opacity 0.25s ease;
+    }
     section[hidden], footer[hidden] { display: none; }
+    body.is-fading section, body.is-fading footer { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      section, footer { transition: none; }
+    }
 
     .bar {
       height: 40px;
@@ -285,8 +293,8 @@
       </a>
       <nav class="nav" aria-label="Sections">
         <span class="nav-row">
-          <button data-filter="label">Record Label</button><span class="sep">&bull;</span>
-          <button data-filter="video">Documentary Videos</button>
+          <button data-filter="video">Documentary Videos</button><span class="sep">&bull;</span>
+          <button data-filter="label">Record Label</button>
         </span>
         <span class="sep sep-mid">&bull;</span>
         <span class="nav-row">
@@ -457,11 +465,19 @@
     const blocks = [...document.querySelectorAll('section, footer')];
     let activeFilter = null;
 
+    const FADE_MS = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250;
+    let fadeTimer = null;
+
     function applyFilter(f) {
       activeFilter = f;
       filterBtns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === f));
-      blocks.forEach(el => { el.hidden = f !== null && el.dataset.cat !== f; });
-      document.body.classList.toggle('is-filtered', f !== null);
+      clearTimeout(fadeTimer);
+      document.body.classList.add('is-fading');
+      fadeTimer = setTimeout(() => {
+        blocks.forEach(el => { el.hidden = f !== null && el.dataset.cat !== f; });
+        document.body.classList.toggle('is-filtered', f !== null);
+        document.body.classList.remove('is-fading');
+      }, FADE_MS);
     }
 
     filterBtns.forEach(btn => btn.addEventListener('click', () =>
