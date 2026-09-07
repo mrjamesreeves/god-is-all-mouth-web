@@ -21,7 +21,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: #f6f6f6;
+      background-color: #FDFDFD;
       font-family: 'ibm-plex-serif', Georgia, serif;
       color: var(--ink);
       padding: 0 20px;
@@ -30,15 +30,17 @@
     }
 
     /* fixed ink wash, anchored top-left (element, not background-attachment,
-       so iOS honors it) */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: url('assets/ink-bg.webp') top left no-repeat;
-      background-size: 1431px auto;
-      pointer-events: none;
+       so iOS honors it); desktop-only, so phones never download the image */
+    @media (min-width: 641px) {
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: url('assets/ink-bg.webp') top left no-repeat;
+        background-size: 1431px auto;
+        pointer-events: none;
+      }
     }
 
     .col {
