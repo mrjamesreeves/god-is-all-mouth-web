@@ -1,8 +1,10 @@
 /* Transistor → godisallmouth.com → Website → Custom CSS. Paste as-is; @import must stay the first rule. */
 @import url("https://use.typekit.net/ums8war.css");
 .site-content-main { box-shadow: none !important; }
+
 /* Custom poster for the featured video: hero on homepage + episode page only, not grid cards */
 .hero-poster img[src*="/vi/j-b-8Dy4vCg/"] { content: url("https://god-is-all-mouth-web.vercel.app/thumbs/i-ching.webp"); }
+
 /* Show overflow nav items inline instead of in the ••• dropdown */
 .site-nav-more { display: none !important; }
 .site-nav .site-nav-more-menu {
@@ -32,7 +34,6 @@ h1, h2, h3, .font-display, .site-heading, .site-episode-title,
 .site-content-subheader {
 display: none;
 }
-.site-episode-title { margin: 0 !important; }
 .btn-ghost { letter-spacing: 1.5px !important; }
 /* Grid cards: hide the episode title (the title cards already show it) but keep it for screen readers + search */
 h3.site-episode-title {
@@ -56,6 +57,8 @@ h3.site-episode-title {
   .site-footer-nav ul { column-gap: 0.875rem; }
   .site-footer-nav a { letter-spacing: 0.6px; }
 }
+
+.mt-4 { margin-top: 0 !important;}
 /* "Latest Episodes" heading: same type as the ALL EPISODES link (.btn-ghost.btn-sm), padded to share its baseline */
 h2.site-heading {
   font-size: 0.7rem !important; line-height: 1 !important; letter-spacing: 1.5px;
