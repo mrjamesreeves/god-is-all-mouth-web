@@ -1,0 +1,35 @@
+/* Transistor → godisallmouth.com → Website → Custom CSS. Paste as-is; @import must stay the first rule. */
+@import url("https://use.typekit.net/ums8war.css");
+.site-content-main { box-shadow: none !important; }
+img[src*="/vi/j-b-8Dy4vCg/"] { content: url("https://god-is-all-mouth-web.vercel.app/thumbs/i-ching.webp");}
+/* Show overflow nav items inline instead of in the ••• dropdown */
+.site-nav-more { display: none !important; }
+.site-nav .site-nav-more-menu {
+  display: flex !important; position: static; gap: 1.5rem;
+  width: auto; margin: 0; padding: 0; border: 0; border-radius: 0;
+  background: none; box-shadow: none; overflow: visible;
+  opacity: 1 !important; transform: none !important;
+}
+.site-nav .site-nav-more-menu a {
+  padding: 0; font-size: inherit; white-space: nowrap;
+  background: none; color: var(--color-muted);
+}
+.site-nav .site-nav-more-menu a:hover { background: none; color: var(--color-text); }
+.site-header-logo img, .site-logo img { content: url("https://god-is-all-mouth-web.vercel.app/assets/god-is-all-mouth-text-logo.webp"); }
+p.site-hero-description {
+font-size: 1.15rem !important;
+line-height: 1.65rem !important;
+}
+/* Type: DIN 2014 Narrow caps for headlines + UI, IBM Plex Serif for body */
+body { font-family: "ibm-plex-serif", Georgia, serif; }
+h1, h2, h3, .font-display, .site-heading, .site-episode-title,
+.site-nav a, .site-nav-more-menu a, .site-mobile-nav a, .header-link,
+.btn, .site-button, .header-pill, .eyebrow {
+  font-family: "din-2014-narrow", "Arial Narrow", sans-serif;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;
+}
+.site-content-subheader {
+display: none;
+}
+.site-episode-title { margin: 0 !important; }
+.btn-ghost { letter-spacing: 1.5px !important; }
