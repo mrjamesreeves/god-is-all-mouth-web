@@ -1,7 +1,8 @@
 /* Transistor → godisallmouth.com → Website → Custom CSS. Paste as-is; @import must stay the first rule. */
 @import url("https://use.typekit.net/ums8war.css");
 .site-content-main { box-shadow: none !important; }
-img[src*="/vi/j-b-8Dy4vCg/"] { content: url("https://god-is-all-mouth-web.vercel.app/thumbs/i-ching.webp");}
+/* Custom poster for the featured video: hero on homepage + episode page only, not grid cards */
+.hero-poster img[src*="/vi/j-b-8Dy4vCg/"] { content: url("https://god-is-all-mouth-web.vercel.app/thumbs/i-ching.webp"); }
 /* Show overflow nav items inline instead of in the ••• dropdown */
 .site-nav-more { display: none !important; }
 .site-nav .site-nav-more-menu {
