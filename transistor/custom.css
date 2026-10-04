@@ -39,3 +39,20 @@ h3.site-episode-title {
   position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+/* Footer nav: match the top nav, one line, right-aligned */
+.site-footer-nav { justify-self: end; align-self: center; }
+.site-footer-nav ul {
+  display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem 1.5rem;
+  margin: 0; font-size: 14px;
+}
+.site-footer-nav li { margin: 0 !important; }
+.site-footer-nav a {
+  font-family: "din-2014-narrow", "Arial Narrow", sans-serif;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--color-muted); white-space: nowrap;
+}
+.site-footer-nav a:hover { color: var(--color-text); }
+@media (max-width: 640px) {
+  .site-footer-nav ul { column-gap: 0.875rem; }
+  .site-footer-nav a { letter-spacing: 0.6px; }
+}
