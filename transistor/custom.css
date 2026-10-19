@@ -6,12 +6,16 @@
 /* Custom poster for the featured video: hero on homepage + episode page only, not grid cards */
 .hero-poster img[src*="/vi/j-b-8Dy4vCg/"] { content: url("https://god-is-all-mouth-web.vercel.app/thumbs/i-ching.webp"); }
 
-/* Header: Ritual Fields logo, left of the nav on desktop */
+/* Header: Ritual Fields logo, left of the nav. Desktop matches the Figma comp — wordmark 160px wide with its top
+   70px from the browser top, nav text 100px down, Subscribe pill 89px down. (The SVG carries ~6px of blur margin.) */
 .site-header-logo img, .site-logo img { content: url("https://god-is-all-mouth-web.vercel.app/assets/ritual-fields-logo.svg"); }
 .site-header-logo img { max-height: 3.25rem; }
 @media (min-width: 1024px) {
-  .site-header-logo { order: -1; }
-  .site-nav { margin-left: 1.5rem; }
+  .site-header .site-container { height: auto; align-items: flex-start; padding-top: 64px; padding-bottom: 36px; }
+  .site-header-logo { order: -1; margin-left: -6px; }
+  .site-header-logo img { width: 172px; max-width: none; max-height: none; height: auto; }
+  .site-nav { margin-left: 1.5rem; margin-top: 35px; }
+  .site-header-subscribe { margin-top: 25px; }
 }
 
 /* Show overflow nav items inline instead of in the ••• dropdown */
@@ -31,8 +35,8 @@
 
 /* Nav items: hide Home (the logo is home), relabel Episodes → Videos, order Videos · Dream Club · Music · People */
 .site-nav a[href="/"], .site-mobile-nav a[href="/"], .site-footer-nav li:has(> a[href="/"]) { display: none !important; }
-.site-nav a[href="/episodes"], .site-mobile-nav a[href="/episodes"], .site-footer-nav a[href="/episodes"] { font-size: 0 !important; letter-spacing: 0; }
-.site-nav a[href="/episodes"]::after, .site-mobile-nav a[href="/episodes"]::after, .site-footer-nav a[href="/episodes"]::after { content: "Videos"; font-size: 14px; letter-spacing: 4.2px; }
+.site-nav a[href="/episodes"], .site-mobile-nav a[href="/episodes"], .site-footer-nav a[href="/episodes"] { font-size: 0 !important; line-height: 0; letter-spacing: 0; }
+.site-nav a[href="/episodes"]::after, .site-mobile-nav a[href="/episodes"]::after, .site-footer-nav a[href="/episodes"]::after { content: "Videos"; display: inline-block; font-size: 12px; line-height: 1; letter-spacing: 4.2px; }
 .site-nav > div { order: 1; }
 .site-nav a[href="/people"] { order: 2; }
 .site-footer-nav li:has(> a[href="/people"]) { order: 2; }
@@ -50,10 +54,11 @@ h1, h2, h3, .font-display, .site-heading, .site-episode-title,
   font-family: "din-2014-narrow", "Arial Narrow", sans-serif;
   font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;
 }
-/* Nav + Subscribe: Plex Sans Regular 14px, 4.2px tracking */
+/* Nav + Subscribe: Plex Sans Medium 12px, 4.2px tracking; line-height 1 keeps every item on one baseline */
+.site-nav { font-size: 12px; }
 .site-nav a, .site-nav-more-menu a, .site-mobile-nav a, .header-link, .site-footer-nav a, .header-pill {
   font-family: "ibm-plex-sans", "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 400; font-size: 14px; letter-spacing: 4.2px; text-transform: uppercase;
+  font-weight: 500; font-size: 12px; letter-spacing: 4.2px; text-transform: uppercase; line-height: 1;
 }
 .site-nav a, .site-footer-nav a { color: #c2c2c2; }
 .site-nav a:hover, .site-nav a.is-current, .site-footer-nav a:hover { color: #fff; }
